@@ -5,3 +5,13 @@ services:
     build: ./docker/php-fpm
     volumes:
       - ./:/app
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: buywifi
+

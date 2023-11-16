@@ -7,9 +7,9 @@ class UserRegistrationTest extends \PHPUnit\Framework\TestCase
      */
     public function register(): void
     {
-        $this->expectNotToPerformAssertions();
         $userSaverMock = $this->createMock(\App\Domain\User\Store\SaveUserInterface::class);
+        $userSaverMock->expects($this->once())->method('save');
         $userRegister = new \App\Domain\User\UserRegistration($userSaverMock);
-        $userRegister->register(new \App\Domain\User\User());
+        $userRegister->register(new \App\Domain\User\User("komarov", "4321"));
     }
 }

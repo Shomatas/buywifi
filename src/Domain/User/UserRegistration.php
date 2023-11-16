@@ -14,9 +14,9 @@ class UserRegistration
     {
 
     }
-    public function register(User $user): void
+    public function register(User $user): int
     {
-        $dto = new UserRegisterDTO();
-        $data = $this->userSaver->save($dto);
+        $dto = new UserRegisterDTO($user->getLogin(), $user->getPassword());
+        return $this->userSaver->save($dto);
     }
 }
